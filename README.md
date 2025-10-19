@@ -306,9 +306,42 @@ backend/
 
 ---
 
+## Login 
+## ข้อมูลเข้าสู่ระบบ
+
+### Default User Accounts
+### บัญชีผู้ใช้เริ่มต้น
+
+After running the seed command, you can use these default accounts to login:
+
+หลังจากรันคำสั่ง seed แล้ว คุณสามารถใช้บัญชีเริ่มต้นเหล่านี้เพื่อเข้าสู่ระบบ:
+
+| Role | Email | Password | Description |
+|-------------|-----------------------|--------------|--------------------|
+| **Admin**   | `admin@example.com`   | `admin123`   | Full system access |
+| **Manager** | `manager@example.com` | `manager123` | Management access  |
+| **Staff**   | `staff1@example.com`  | `staff123`   | Staff access       |
+
+| บทบาท | อีเมล | รหัสผ่าน | คำอธิบาย |
+|-------------|-----------------------|--------------|----------------|
+| **Admin**   | `admin@example.com`   | `admin123`   | เข้าถึงระบบทั้งหมด |
+| **Manager** | `manager@example.com` | `manager123` | เข้าถึงการจัดการ   |
+| **Staff**   | `staff1@example.com`  | `staff123`   | เข้าถึงพนักงาน    |
+
+### Login URLs
+
+### URL สำหรับเข้าสู่ระบบ
+
+- **Frontend**: `http://localhost:3000`
+- **Backend API**: `http://localhost:3001/api/v1`
+
+---
+
 ## Notes
 
 - **MinIO Images**: Use presigned URLs to serve images securely in frontend.
 - **Cart State**: Stored in frontend using Zustand; no backend persistence until order submission.
 - **Redis**: Can be used to cache menu or frequently accessed data.
 - **Docker**: Everything required (DB, Redis, MinIO) is included in `docker-compose.yml`.
+
+---
