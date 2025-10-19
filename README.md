@@ -1,10 +1,14 @@
 # QR Code Ordering System
+# ระบบสั่งอาหารผ่าน QR Code
 
 A modern restaurant ordering system where customers can order directly via QR code at their table. Built with **Next.js 13+**, **Bun backend**, **PostgreSQL**, **Redis**, and **MinIO**.
+
+ระบบสั่งอาหารสมัยใหม่ที่ลูกค้าสามารถสั่งอาหารโดยตรงผ่าน QR Code ที่โต๊ะ ใช้ **Next.js 13+**, **Bun backend**, **PostgreSQL**, **Redis**, และ **MinIO**
 
 ---
 
 ## Features
+## ฟีเจอร์
 
 - Scan QR code to open table-specific menu.
 - Browse available menu items with images.
@@ -14,9 +18,18 @@ A modern restaurant ordering system where customers can order directly via QR co
 - Image storage via **MinIO** with presigned URLs.
 - Backend caching with **Redis**.
 
+- สแกน QR Code เพื่อเปิดเมนูเฉพาะโต๊ะ
+- เรียกดูรายการอาหารพร้อมรูปภาพ
+- เพิ่ม/ลบรายการในตะกร้าและปรับจำนวน
+- ส่งคำสั่งซื้อพร้อมหมายเหตุเพิ่มเติม
+- จัดการเมนู โต๊ะ และคำสั่งซื้อในระบบหลังบ้าน
+- เก็บรูปภาพผ่าน **MinIO** ด้วย presigned URLs
+- ระบบแคชหลังบ้านด้วย **Redis**
+
 ---
 
 ## Tech Stack
+## เทคโนโลยีที่ใช้
 
 - **Frontend**: Next.js 13+, React, TypeScript, Tailwind CSS
 - **Backend**: Bun + Hono framework
@@ -27,22 +40,88 @@ A modern restaurant ordering system where customers can order directly via QR co
 - **Icons**: lucide-react
 - **UI Components**: shadcn/ui
 
+- **ส่วนหน้า**: Next.js 13+, React, TypeScript, Tailwind CSS
+- **ส่วนหลัง**: Bun + Hono framework
+- **ฐานข้อมูล**: PostgreSQL 16
+- **แคช**: Redis 7
+- **ที่เก็บไฟล์**: MinIO
+- **การจัดการสถานะ**: Zustand (cart store)
+- **ไอคอน**: lucide-react
+- **คอมโพเนนต์ UI**: shadcn/ui
+
 ---
 
 ## Getting Started
+## เริ่มต้นใช้งาน
 
 ### Prerequisites
+### ข้อกำหนดเบื้องต้น
 
 - Docker & Docker Compose
 - Node.js / Bun (depending on environment)
 - Optional: bun or yarn
 
+- Docker & Docker Compose
+- Node.js / Bun (ขึ้นอยู่กับสภาพแวดล้อม)
+- ตัวเลือก: bun หรือ yarn
+
 ### Clone Repository
+### คลอนโปรเจค
 
 ```bash
 git clone https://github.com/yourusername/qr-code-ordering.git
 cd qr-code-ordering
 ```
+
+---
+
+## How to Run Project
+## วิธีการรันโปรเจค
+
+Follow these steps to set up and run the project:
+
+ทำตามขั้นตอนเหล่านี้เพื่อตั้งค่าและรันโปรเจค:
+
+1. **Run Prisma Migration:**
+   **รัน Prisma Migration:**
+   ```bash
+   bunx prisma migrate dev --name init
+   ```
+
+2. **Reset Prisma (if migration fails):**
+   **รีเซ็ต Prisma (หาก migration ไม่สำเร็จ):**
+   ```bash
+   bunx prisma reset
+   ```
+
+3. **Seed Database (run once to start project):**
+   **ใส่ข้อมูลเริ่มต้นในฐานข้อมูล (รันครั้งเดียวเพื่อเริ่มโปรเจค):**
+   ```bash
+   bun run seed
+   ```
+   (Run this in the backend directory)
+   (รันในโฟลเดอร์ backend)
+
+4. **Start Backend:**
+   **เริ่ม Backend:**
+   ```bash
+   bun run dev
+   ```
+   (Run this in the backend directory)
+   (รันในโฟลเดอร์ backend)
+
+5. **Start Frontend:**
+   **เริ่ม Frontend:**
+   ```bash
+   bun run dev
+   ```
+   (Run this in the frontend directory)
+   (รันในโฟลเดอร์ frontend)
+
+6. **Login with User Email and Password:**
+   **เข้าสู่ระบบด้วยอีเมลและรหัสผ่าน:**
+   Use the seeded user credentials to access the system.
+   ใช้อีเมลและรหัสผ่านที่ใส่ไว้ในระบบเพื่อเข้าถึง
 
 ---
 
